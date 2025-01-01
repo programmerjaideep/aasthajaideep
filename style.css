@@ -1,30 +1,66 @@
 /* styles.css */
 
+/* Body with dark background and image */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background: linear-gradient(120deg, #f6d365, #fda085);
-    color: #333;
+    background: url('oo.jpg') no-repeat center center fixed;
+    background-size: cover; /* Make the background cover the screen */
+    color: #fff;
     overflow-x: hidden;
-    animation: backgroundChange 10s infinite alternate;
+    position: relative;
+    z-index: 0;
 }
 
+/* Dark overlay to increase contrast for text */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Darker overlay */
+    z-index: -1;
+}
+
+/* Header styling */
 header {
-    background: linear-gradient(90deg, #ff6f91, #ff9671);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
     color: #fff;
     padding: 2rem 0;
     text-align: center;
     animation: fadeIn 2s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Soft shadow */
 }
 
 header h1 {
     margin: 0;
-    font-size: 4rem;
+    font-size: 3.5rem; /* Larger font size for elegance */
     font-weight: bold;
-    animation: slideIn 1s ease-out;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: slideIn 1s ease-out, colorChange 4s infinite; /* Animation */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Animated text color change for header */
+@keyframes colorChange {
+    0% {
+        color: #ff6f91;
+    }
+    25% {
+        color: #ff9671;
+    }
+    50% {
+        color: #f6d365;
+    }
+    75% {
+        color: #8fd3f4;
+    }
+    100% {
+        color: #fda085;
+    }
 }
 
 nav ul {
@@ -32,75 +68,75 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    margin: 1rem 0 0;
+    margin: 1.5rem 0;
     animation: bounceIn 1.5s ease-in-out;
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0 20px;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.5rem;
-    transition: color 0.3s, transform 0.3s;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    background: linear-gradient(90deg, #ff9671, #ffc75f);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.4rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ff6f91, #ff9671);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.3s;
 }
 
 nav ul li a:hover {
     color: #fff;
-    transform: scale(1.2);
-    background: linear-gradient(90deg, #ffc75f, #ff9671);
+    transform: scale(1.1);
+    background: linear-gradient(90deg, #fda085, #8fd3f4);
 }
 
 section {
-    padding: 3rem;
-    margin: 2rem auto;
-    max-width: 800px;
-    background: linear-gradient(135deg, #ffffff, #e4f9f5);
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    padding: 4rem;
+    margin: 3rem auto;
+    max-width: 900px;
+    background: rgba(20, 20, 20, 0.8); /* Dark background with opacity */
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     animation: fadeInUp 1.5s ease-in-out;
     transition: transform 0.5s;
 }
 
 section:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
 section h2 {
     margin-top: 0;
     color: #00c9a7;
-    font-size: 2.5rem;
-    animation: rotateIn 1.2s ease-in-out;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 2.8rem;
+    animation: rotateIn 1.2s ease-in-out, colorChange 4s infinite;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 form label {
     display: block;
-    margin-top: 1rem;
+    margin-top: 1.2rem;
     font-weight: bold;
-    color: #333;
+    color: #fff; /* Light color */
     animation: fadeIn 1s ease-in-out;
 }
 
 form input, form textarea {
     width: 100%;
-    padding: 15px;
-    margin-top: 0.5rem;
+    padding: 18px;
+    margin-top: 0.6rem;
     border: 2px solid #00c9a7;
-    border-radius: 10px;
+    border-radius: 12px;
     box-sizing: border-box;
     transition: box-shadow 0.3s, border-color 0.3s;
 }
 
 form input:focus, form textarea:focus {
-    box-shadow: 0 0 10px #00c9a7;
+    box-shadow: 0 0 15px #00c9a7;
     border-color: #0073e6;
 }
 
@@ -108,11 +144,11 @@ form button {
     background: linear-gradient(90deg, #00c9a7, #0073e6);
     color: #fff;
     border: none;
-    padding: 15px 30px;
-    margin-top: 1.5rem;
+    padding: 18px 35px;
+    margin-top: 2rem;
     cursor: pointer;
-    border-radius: 10px;
-    font-size: 1.2rem;
+    border-radius: 12px;
+    font-size: 1.4rem;
     font-weight: bold;
     transition: background 0.3s, transform 0.3s;
     animation: fadeIn 1.5s ease-in-out;
@@ -124,23 +160,23 @@ form button:hover {
 }
 
 footer {
-    text-align: center;
-    padding: 2rem 0;
-    background: linear-gradient(90deg, #ff6f91, #ff9671);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); /* Dark gradient background */
     color: #fff;
-    margin-top: 3rem;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Soft shadow */
+    margin-bottom: 2rem;
     animation: fadeIn 2s ease-in-out;
-    font-size: 1.2rem;
 }
 
-/* Styles for the Resources Section */
+/* Resources Section */
 #resources ul {
     list-style: none;
     padding: 0;
 }
 
 #resources ul li {
-    margin: 0.8rem 0;
+    margin: 1rem 0;
     animation: slideInLeft 1.5s ease-in-out;
 }
 
@@ -148,17 +184,17 @@ footer {
     color: #0073e6;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     transition: color 0.3s, transform 0.3s;
-    padding: 0.5rem;
-    border-radius: 5px;
+    padding: 0.6rem;
+    border-radius: 8px;
     background: linear-gradient(90deg, #00c9a7, #0073e6);
     color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 }
 
 #resources ul li a:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     background: linear-gradient(90deg, #0073e6, #00c9a7);
 }
 
@@ -226,14 +262,20 @@ footer {
     }
 }
 
-@keyframes backgroundChange {
+@keyframes colorChange {
     0% {
-        background: linear-gradient(120deg, #f6d365, #fda085);
+        color: #ff6f91;
+    }
+    25% {
+        color: #ff9671;
     }
     50% {
-        background: linear-gradient(120deg, #84fab0, #8fd3f4);
+        color: #f6d365;
+    }
+    75% {
+        color: #8fd3f4;
     }
     100% {
-        background: linear-gradient(120deg, #fccb90, #d57eeb);
+        color: #fda085;
     }
 }
